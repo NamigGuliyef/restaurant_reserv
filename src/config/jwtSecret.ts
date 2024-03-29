@@ -1,0 +1,1 @@
+export const jwtSecret= "restaurant_reserve2024"

@@ -1,11 +1,12 @@
-import { IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class createRestaurantDto {
+  @IsNotEmpty()
+  name: string;
+}
+
+
+export class updateRestaurantDto {
   @IsOptional()
   name: string;
-  @IsOptional()
-  @IsNumber()
-  table: number;
-  @IsOptional()
-  reserved: boolean;
 }

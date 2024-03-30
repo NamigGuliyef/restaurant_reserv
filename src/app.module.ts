@@ -15,10 +15,10 @@ import { AdminController } from './admin/admin.controller';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule implements NestModule { 
-configure(consumer: MiddlewareConsumer) {
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
     consumer.apply(userAuthMiddleware).forRoutes(UserController)
     consumer.apply(adminAuthMiddleware).forRoutes(AdminController)
-}
+  }
 
 }

@@ -5,12 +5,9 @@ import mongoose from 'mongoose';
 export class Restaurant {
   @Prop({ required: true })
   name: string;
-  @Prop({ required: true })
-  table: number;
-  @Prop({ required: true, default: false })
-  reserved: boolean;
-  @Prop({ type: [mongoose.Schema.Types.ObjectId], required: true, ref: 'user' })
-  booking_persons: string[];
+  @Prop({ type: [mongoose.Schema.Types.ObjectId], required: true, ref: "table" })
+  tableIds: string[];
+
 }
 
 export const restaurantModel = SchemaFactory.createForClass(Restaurant);

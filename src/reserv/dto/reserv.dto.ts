@@ -1,11 +1,14 @@
-import { IsNotEmpty } from 'class-validator';
-import mongoose from 'mongoose';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class createReservDto {
   @IsNotEmpty()
-  userId: mongoose.Schema.Types.ObjectId
+  date: Date;
   @IsNotEmpty()
   time: string;
   @IsNotEmpty()
   person_count: number;
+  @IsOptional()
+  table_number: number;
+  @IsOptional()
+  reserved: boolean;
 }

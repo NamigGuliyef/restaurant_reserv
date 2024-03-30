@@ -11,10 +11,11 @@ export class User {
   phone_number: string
   @Prop({ required: true })
   password: string
-  @Prop({ type: [mongoose.Schema.Types.ObjectId], required: true, ref: 'restaurant' })
-  reserved_restaurantIds: string[]
+  @Prop({ type: [mongoose.Schema.Types.ObjectId], required: true, ref: 'reserv' })
+  my_reservIds: string[]
   @Prop({ default: "user" })
   role: string
+  _id: string
 }
 
 export const userModel = SchemaFactory.createForClass(User)

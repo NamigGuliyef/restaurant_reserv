@@ -1,12 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose'
+import { InjectModel } from '@nestjs/mongoose';
+import { sign } from 'jsonwebtoken';
 import { Model } from 'mongoose';
+import { jwtSecret } from 'src/config/jwtSecret';
 import { comparePassword, hashPassword } from 'src/helpers/hashPass';
 import { createUserDto } from 'src/user/dto/user.dto';
 import { User } from 'src/user/model/user.schema';
 import { messageResponse, tokenResponse, userSignIn } from './auth.type';
-import { sign } from 'jsonwebtoken'
-import { jwtSecret } from 'src/config/jwtSecret';
 
 @Injectable()
 export class AuthService {

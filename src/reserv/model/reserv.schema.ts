@@ -11,13 +11,12 @@ export class Reserv {
   time: string;
   @Prop({ required: true })
   person_count: number;
-  @Prop()
-  table_number: number
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'table' })
+  tableId: Types.ObjectId
   @Prop({ type: mongoose.Schema.Types.ObjectId, required: true, ref: 'restaurant' })
   restaurantId: Types.ObjectId
   @Prop({ required: true, default: false })
   reserved: boolean;
-
 }
 
 export const reservModel = SchemaFactory.createForClass(Reserv);

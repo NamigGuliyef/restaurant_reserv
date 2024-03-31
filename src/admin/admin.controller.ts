@@ -1,11 +1,13 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { messageResponse } from 'src/auth/auth.type';
+import { Reserv } from 'src/reserv/model/reserv.schema';
 import { createRestaurantDto, updateRestaurantDto } from 'src/restaurant/dto/restaurant.dto';
 import { Restaurant } from 'src/restaurant/model/restaurant.schema';
 import { createTableDto, updateTableDto } from 'src/table/dto/table.dto';
 import { Table } from 'src/table/model/table.schema';
 import { AdminService } from './admin.service';
 import { reservConfirmationDto } from './admin.type';
+import { reservFilter, tableFilter } from './query.type';
 
 @Controller('admin')
 export class AdminController {
@@ -71,5 +73,32 @@ export class AdminController {
     return await this.adminService.userReservConfirmation(reservConfirmationDto)
   }
 
+
+  @Get('/dashboard/restaurant/tables/q')
+  @HttpCode(HttpStatus.OK)
+  async getFilter(@Query() TableFilter: tableFilter): Promise<Table[]> {
+    return await this.adminService.getTableFilter(TableFilter)
+  }
+
+
+  @Get('/dashboard/reserves')
+  @HttpCode(HttpStatus.OK)
+  async getAllUserReserv(): Promise<Reserv[]> {
+    return await this.adminService.getAllUserReserv()
+  }
+
+
+  @Get('/dashboard/reserves/q')
+  @HttpCode(HttpStatus.OK)
+  async getReservFilter(@Query() ReservFilter: reservFilter): Promise<Reserv[]> {
+    return await this.adminService.getReservFilter(ReservFilter)
+  }
+
+
+  @Delete('/dashboard/deactive-reserv/:reservId')
+  @HttpCode(HttpStatus.OK)
+  async getReservDeactive(@Param('reservId') reservId: string): Promise<messageResponse> {
+    return await this.adminService.getReservDeactive(reservId)
+  }
 
 }

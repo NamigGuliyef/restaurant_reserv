@@ -3,10 +3,10 @@ import { IsMobilePhone, IsNotEmpty, IsPhoneNumber, IsStrongPassword, Length, len
 export class createUserDto {
 
   @IsNotEmpty({ message: "Ad boşdur" })
-  @Matches(new RegExp("^[A-Za-zşəıöğüçƏIÖĞÜÇŞ]{3,20}$"))
+  @Matches(new RegExp("^[A-Za-zşəıöğüçƏIÖĞÜÇŞiİ]{3,20}$"))
   name: string
   @IsNotEmpty({ message: "Soyad boşdur" })
-  @Matches(new RegExp("^[A-Za-zşəıöğüçƏIÖĞÜÇŞ]{3,20}$"))
+  @Matches(new RegExp("^[A-Za-zşəıöğüçƏIÖĞÜÇŞİi]{3,20}$"))
   surname: string
   @IsNotEmpty({ message: "Mobil nömrə boşdur" })
   @IsMobilePhone("az-AZ")

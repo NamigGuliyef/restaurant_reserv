@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsOptional } from 'class-validator';
+import mongoose from 'mongoose';
 
 export class createReservDto {
   @IsNotEmpty()
@@ -8,7 +9,7 @@ export class createReservDto {
   @IsNotEmpty()
   person_count: number;
   @IsOptional()
-  table_number: number;
+  tableId: mongoose.Schema.Types.ObjectId;
   @IsOptional()
   reserved: boolean;
 }
